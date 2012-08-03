@@ -5,11 +5,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
-import com.google.android.maps.MapActivity;
+import com.actionbarsherlock.app.SherlockMapActivity;
 import com.slidingmenu.lib.SlidingMenu;
 
 
-public abstract class SlidingMapActivity extends MapActivity {
+public abstract class SlidingMapActivity extends SherlockMapActivity {
 
 	private SlidingActivityHelper mHelper;
 
