@@ -5,41 +5,47 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 
-import com.google.android.maps.MapActivity;
+import com.actionbarsherlock.app.SherlockMapActivity;
 import com.slidingmenu.lib.SlidingMenu;
 
 
-public abstract class SlidingMapActivity extends MapActivity {
+public abstract class SlidingMapActivity extends SherlockMapActivity {
 
 	private SlidingActivityHelper mHelper;
 
-	public void onCreate(Bundle savedInstanceState) {
+	@Override
+    public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		mHelper = new SlidingActivityHelper(this);
 		mHelper.onCreate(savedInstanceState);
 	}
 
-	public void onPostCreate(Bundle savedInstanceState) {
+	@Override
+    public void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 		mHelper.onPostCreate(savedInstanceState);
 	}
 	
-	public View findViewById(int id) {
+	@Override
+    public View findViewById(int id) {
 		View v = super.findViewById(id);
 		if (v != null)
 			return v;
 		return mHelper.findViewById(id);
 	}
 	
-	public void setContentView(int id) {
+	@Override
+    public void setContentView(int id) {
 		setContentView(getLayoutInflater().inflate(id, null));
 	}
 
-	public void setContentView(View v) {
+	@Override
+    public void setContentView(View v) {
 		setContentView(v, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
 
-	public void setContentView(View v, LayoutParams params) {
+	@Override
+    public void setContentView(View v, LayoutParams params) {
 		super.setContentView(v, params);
 		mHelper.registerAboveContentView(v, params);
 	}
